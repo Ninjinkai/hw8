@@ -15,6 +15,7 @@ $userstr = ' (Guest)';
   }
   else $loggedin = FALSE;
 
+// If the user is not signed in, they are redirected to the sign in/up form.
   if(!$loggedin)
   {
     header('Location: forms/index.php');
@@ -28,7 +29,7 @@ $userstr = ' (Guest)';
 	<meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
+    <meta name="description" content="COP3813 Homework 8 PHP Photo Sharing App Nick Petty">
     <meta name="author" content="Nick Petty">
     <link rel="icon" href="icons/favicon.ico">
 <?php
