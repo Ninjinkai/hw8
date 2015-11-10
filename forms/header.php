@@ -51,13 +51,14 @@ echo "  <title>$appname</title>\n";
   if ($loggedin)
   {
 echo <<<_END
+      <a id="appNameBtn" class="btn btn-lg btn-primary btn-block" href="../wall.php" role="button">View Wall</a>
       <a id="signOutBtn" class="btn btn-lg btn-primary btn-block" href="logout.php" role="button">Sign out</a>
-      <a id="appNameBtn" class="btn btn-lg btn-primary btn-block" href="wall.php" role="button">$appname</a>
 _END;
   }
   else
   {
 echo <<<_END
+      <a id="appNameBtn" class="btn btn-lg btn-primary btn-block" href="../wall.php" role="button">View Wall</a>
       <a id="signUpBtn" class="btn btn-lg btn-primary btn-block" href="signup.php" role="button">Sign up</a>
       <a id="signInBtn" class="btn btn-lg btn-primary btn-block" href="signin.php" role="button">Sign in</a>
 _END;

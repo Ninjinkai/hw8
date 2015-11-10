@@ -32,7 +32,7 @@
         $_SESSION['pass'] = $pass;
 // Clear forms and present link to main app page.
         echo "<script>$(\"#primaryForm\").remove();</script>";
-        die("You are now signed in. Please <a href='../postcard.php'>" .
+        die("You are now signed in. Please <a href='../wall.php'>" .
             "click here</a> to continue.<br><br>");
       }
     }
