@@ -58,4 +58,4 @@ function submit()
     // 2. Make room for new stuff: formatted title & text + filtered image
     parent.innerHTML = '<h2>' + title + '</h2><p>' + text + '</p>';
     parent.appendChild(filteredImage);   
-}
+};

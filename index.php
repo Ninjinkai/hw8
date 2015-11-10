@@ -54,6 +54,7 @@ $userstr = ' (Guest)';
                 echo "<p class=\"navbar-text\">$user"
 ?>
                     <a class="btn btn-lg btn-primary navbar-btn" href="forms/logout.php" role="button">Sign out</a>
+                    <a class="btn btn-lg btn-primary navbar-btn" href="wall.php" role="button">View wall</a>
                 </p>
             </div>
         </div>
@@ -61,14 +62,14 @@ $userstr = ' (Guest)';
 	<div class="container">    
 		<div class="row">
 			<div id="formParent" class="col-md-6 col-md-offset-3">
-				<form id="form" class="form-horizontal" method="POST" action="postcard.php" enctype="multipart/form-data">
+				<form id="form" class="form-horizontal" method="POST" action="wall.php" enctype="multipart/form-data">
                     <div class="form-group">
                         <label for="name" class="control-label col-xs-1">Name</label>
                         <div class="col-xs-11">
                             <div class="input-group">
                                 <span class="input-group-addon"><span class="fa fa-user fa-fw"></span></span>
                                 <input type="text" class="form-control" id="name" name="name" 
-                            maxlength="20" size="20" value="" required placeholder="Johnny" autofocus>
+                            maxlength="20" size="20" value="<?php echo $user ?>" required>
                             </div>
                         </div>
                     </div>
@@ -79,7 +80,7 @@ $userstr = ' (Guest)';
                             <div class="input-group">
                                 <span class="input-group-addon"><span class="fa fa-header fa-fw"></span></span>
                                 <input type="text" class="form-control" id="title" name="title" 
-                            maxlength="20" size="20" value="" required placeholder="Summer Vacation" autofocus>
+                            maxlength="20" size="20" value="" required placeholder="A Picture" autofocus>
                             </div>
                         </div>
                     </div>
@@ -93,8 +94,8 @@ $userstr = ' (Guest)';
                     
                     <div class="form-group">
                         <label class="sr-only" for="image">Original Image</label>
-                        <img id="image" name="image" src="/" width="100%">
-                        <input type="file" id="upload" name="upload" accept="image/*">
+                        <img id="image" name="image" src="icons/picture.png">
+                        <input type="file" id="upload" name="upload" accept="image/*" required>
                     </div>
 
                     <div class="form-group">
@@ -113,8 +114,8 @@ $userstr = ' (Guest)';
                         </div>
                     </div>                
         
-                    <input type="submit" value="Upload image to wall!" class="btn btn-primary col-md-offset-1">
-                    <input type="button" id="resetForm" value="Start over!" class="btn btn-default">
+                    <input type="submit" value="Upload image" class="btn btn-lg btn-primary col-md-offset-1">
+                    <input type="button" id="resetForm" value="Reset form" class="btn btn-lg btn-default" onclick="location.reload(true);">
 				</form>
 			</div>
 		</div>
