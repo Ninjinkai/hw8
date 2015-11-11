@@ -51,6 +51,7 @@ echo "  <title>$appname</title>\n";
   if ($loggedin)
   {
 echo <<<_END
+      <h3 class="form-signin-heading">$user is signed in.</p>
       <a id="appNameBtn" class="btn btn-lg btn-primary btn-block" href="wall.php" role="button">View Wall</a>
       <a id="signOutBtn" class="btn btn-lg btn-primary btn-block" href="logout.php" role="button">Sign out</a>
 _END;
