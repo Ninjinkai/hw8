@@ -23,16 +23,16 @@ function sanitizeString($_db, $str)
     return $db->real_escape_string($var);
 }
 
-function SavePostToDB($_db, $_user, $_title, $_text, $_time, $_file_name)
+function SavePostToDB($_db, $_user, $_title, $_text, $_time, $_file_name, $_filter)
 {
 	/* Prepared statement, stage 1: prepare query */
-	if (!($stmt = $_db->prepare("INSERT INTO WALL(USER_USERNAME, STATUS_TITLE, STATUS_TEXT, TIME_STAMP, IMAGE_NAME) VALUES (?, ?, ?, ?, ?)")))
+	if (!($stmt = $_db->prepare("INSERT INTO WALL(USER_USERNAME, STATUS_TITLE, STATUS_TEXT, TIME_STAMP, IMAGE_NAME, FILTER) VALUES (?, ?, ?, ?, ?, ?)")))
 	{
 		echo "Prepare failed: (" . $_db->errno . ") " . $_db->error;
 	}
 
 	/* Prepared statement, stage 2: bind parameters*/
-	if (!$stmt->bind_param('sssss', $_user, $_title, $_text, $_time, $_file_name))
+	if (!$stmt->bind_param('sssssi', $_user, $_title, $_text, $_time, $_file_name, $_filter))
 	{
 		echo "Binding parameters failed: (" . $stmt->errno . ") " . $stmt->error;
 	}

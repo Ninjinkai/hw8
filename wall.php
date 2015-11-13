@@ -23,6 +23,19 @@ if(isset($_POST['name']) && isset($_POST['title']) && isset($_POST['text']))
     $time = $_SERVER['REQUEST_TIME'];
 	$file_name = $time . '.jpg';
 
+    if ($_POST['filter'] == 'myNostalgia')
+    {
+        $filter = 1;
+    }
+    elseif ($_POST['filter'] == 'grayscale')
+    {
+        $filter = 2;
+    }
+    else
+    {
+        $filter = 0;
+    }
+
     if ($_FILES)
     {
         $tmp_name = $_FILES['upload']['name'];
@@ -31,7 +44,7 @@ if(isset($_POST['name']) && isset($_POST['title']) && isset($_POST['text']))
         // echo "Uploaded image '$file_name'<br /><img src='$dstFolder/$file_name'/>";
     }
 
-    SavePostToDB($db, $name, $title, $text, $time, $file_name);
+    SavePostToDB($db, $name, $title, $text, $time, $file_name, $filter);
 }
 ?>
 
