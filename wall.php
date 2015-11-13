@@ -41,7 +41,6 @@ if(isset($_POST['name']) && isset($_POST['title']) && isset($_POST['text']))
         $tmp_name = $_FILES['upload']['name'];
         $dstFolder = 'users';
         move_uploaded_file($_FILES['upload']['tmp_name'], $dstFolder . DIRECTORY_SEPARATOR . $file_name);
-        // echo "Uploaded image '$file_name'<br /><img src='$dstFolder/$file_name'/>";
     }
 
     SavePostToDB($db, $name, $title, $text, $time, $file_name, $filter);

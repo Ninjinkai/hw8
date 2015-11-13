@@ -46,7 +46,7 @@ function SavePostToDB($_db, $_user, $_title, $_text, $_time, $_file_name, $_filt
 
 function getPostcards($_db)
 {
-    $query = "SELECT USER_USERNAME, STATUS_TITLE, STATUS_TEXT, TIME_STAMP, IMAGE_NAME FROM WALL ORDER BY TIME_STAMP DESC";
+    $query = "SELECT USER_USERNAME, STATUS_TITLE, STATUS_TEXT, TIME_STAMP, IMAGE_NAME, FILTER FROM WALL ORDER BY TIME_STAMP DESC";
     
     if(!$result = $_db->query($query))
     {
@@ -56,9 +56,28 @@ function getPostcards($_db)
     $output = '';
     while($row = $result->fetch_assoc())
     {
+        if ($row['FILTER'] == 1)
+        {
+            $filter = "myNostalgia";
+        }
+        elseif ($row['FILTER'] == 2)
+        {
+            $filter = "grayscale";
+        }
+        else
+        {
+            $filter = "";
+        }
+
+        $postDate = date('F j, Y, g:i a T', $row['TIME_STAMP']);
+
+
         $output = $output . '<div class="panel panel-default"><div class="panel-heading">"' . $row['STATUS_TITLE']
-        . '" posted by ' . $row['USER_USERNAME'] 
-        . '</div><div class="body"><img src="' . $server_root . 'users/' . $row['IMAGE_NAME'] . '" width="300px">' . $row['STATUS_TEXT'] . '</div></div>' ;
+        . '" posted by ' . $row['USER_USERNAME'] . ' on ' . $postDate . '</div>'
+        . '<div class="row"><div class="col-md-5">'
+        . '<img class="img-responsive center-block '. $filter . '"" src="' . $server_root . 'users/' . $row['IMAGE_NAME'] . '" width="300px"></div>'
+        . '<div class="col-md-7">' . $row['STATUS_TEXT']
+        . '</div></div></div>' ;
     }
     
     return $output;

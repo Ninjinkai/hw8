@@ -19,7 +19,7 @@ _END;
 echo <<<_END
   <script>
       $("#primaryForm").remove();
-    </script>
+  </script>
   <div class='main container'>You cannot sign out because you are not signed in. Please <a href='index.php'>click here</a> to sign in or sign up.
 _END;
   }

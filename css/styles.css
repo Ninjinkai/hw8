@@ -3,6 +3,11 @@
             filter: grayscale(100%);
 }
 
+.myNostalgia {
+	-webkit-filter: saturate(40%) grayscale(100%) contrast(45%) sepia(100%);
+            filter: saturate(40%) grayscale(100%) contrast(45%) sepia(100%);
+}
+
 .wideInput {
 	width: 100%;
 }
