@@ -97,7 +97,3 @@ _END;
         <?php echo getPostcards($db); ?>
     </div>
 </body>
-
-
-
-<?php $db->close(); ?>
