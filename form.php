@@ -108,6 +108,10 @@ $userstr = ' (Guest)';
                             <input type="radio" name="filter" id="grayscale" value="grayscale" onclick="applyGrayscaleFilter();">
                         </div>
                         <div class="checkbox-inline">
+                            <label for="invert">Invert</label>
+                            <input type="radio" name="filter" id="invert" value="invert" onclick="applyInvertFilter();">
+                        </div>
+                        <div class="checkbox-inline">
                             <label for="original">Revert to Original</label>
                             <input type="radio" name="filter" id="lomo" value="lomo" onclick="revertToOriginal();">
                         </div>

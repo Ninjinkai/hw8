@@ -14,6 +14,13 @@ $userstr = ' (Guest)';
   }
   else $loggedin = FALSE;
 
+// If the user is not signed in, they are redirected to the sign in/up form.
+  if(!$loggedin)
+  {
+    header('Location: index.php');
+    exit();
+  }
+
 if(isset($_POST['name']) && isset($_POST['title']) && isset($_POST['text']))
 {    
     $name = sanitizeString($db, $_POST['name']);
@@ -40,6 +47,9 @@ if(isset($_POST['name']) && isset($_POST['title']) && isset($_POST['text']))
     }
 
     SavePostToDB($db, $name, $title, $text, $time, $file_name, $filter);
+
+    header("Location: wall.php");
+    exit();
 }
 ?>
 
@@ -97,3 +107,4 @@ _END;
         <?php echo getPostcards($db); ?>
     </div>
 </body>
+<?php $db->close(); ?>

@@ -32,6 +32,13 @@ function applyGrayscaleFilter()
     image.style.webkitFilter = filter;
 };
 
+function applyInvertFilter() 
+{   
+    var filter = 'invert(100%)';
+    image.style.filter = filter;
+    image.style.webkitFilter = filter;
+};
+
 function revertToOriginal() 
 {   
     var filter = '';

@@ -60,7 +60,7 @@ function getPostcards($_db)
 
         $output = $output . '<div class="panel panel-default"><div class="panel-heading">"'
         . str_replace("\'", "'", $row['STATUS_TITLE'])
-        . '" posted by ' . $row['USER_USERNAME'] . '</div>'
+        . '" posted by ' . str_replace("\'", "'", $row['USER_USERNAME']) . '</div>'
         . '<div class="row"><div class="col-md-5">'
         . '<img class="img-responsive center-block w400 '. $row['FILTER'] . '" src="' . $server_root
         . 'users/' . $row['IMAGE_NAME'] . '" alt="' . $row['IMAGE_NAME'] . '"></div>'
