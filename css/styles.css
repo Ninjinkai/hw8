@@ -11,3 +11,11 @@
 .wideInput {
 	width: 100%;
 }
+
+p {
+	padding-left: 10px;
+}
+
+.w400 {
+	width: 400px;
+}

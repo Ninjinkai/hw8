@@ -23,17 +23,13 @@ if(isset($_POST['name']) && isset($_POST['title']) && isset($_POST['text']))
     $time = $_SERVER['REQUEST_TIME'];
 	$file_name = $time . '.jpg';
 
-    if ($_POST['filter'] == 'myNostalgia')
+    if (isset($_POST['filter']))
     {
-        $filter = 1;
-    }
-    elseif ($_POST['filter'] == 'grayscale')
-    {
-        $filter = 2;
+        $filter = $_POST['filter'];
     }
     else
     {
-        $filter = 0;
+        $filter = "NULL";
     }
 
     if ($_FILES)

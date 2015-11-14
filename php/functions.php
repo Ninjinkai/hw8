@@ -32,7 +32,7 @@ function SavePostToDB($_db, $_user, $_title, $_text, $_time, $_file_name, $_filt
 	}
 
 	/* Prepared statement, stage 2: bind parameters*/
-	if (!$stmt->bind_param('sssssi', $_user, $_title, $_text, $_time, $_file_name, $_filter))
+	if (!$stmt->bind_param('ssssss', $_user, $_title, $_text, $_time, $_file_name, $_filter))
 	{
 		echo "Binding parameters failed: (" . $stmt->errno . ") " . $stmt->error;
 	}
@@ -56,27 +56,15 @@ function getPostcards($_db)
     $output = '';
     while($row = $result->fetch_assoc())
     {
-        if ($row['FILTER'] == 1)
-        {
-            $filter = "myNostalgia";
-        }
-        elseif ($row['FILTER'] == 2)
-        {
-            $filter = "grayscale";
-        }
-        else
-        {
-            $filter = "";
-        }
-
         $postDate = date('F j, Y, g:i a T', $row['TIME_STAMP']);
 
-
-        $output = $output . '<div class="panel panel-default"><div class="panel-heading">"' . $row['STATUS_TITLE']
-        . '" posted by ' . $row['USER_USERNAME'] . ' on ' . $postDate . '</div>'
+        $output = $output . '<div class="panel panel-default"><div class="panel-heading">"'
+        . str_replace("\'", "'", $row['STATUS_TITLE'])
+        . '" posted by ' . $row['USER_USERNAME'] . '</div>'
         . '<div class="row"><div class="col-md-5">'
-        . '<img class="img-responsive center-block '. $filter . '"" src="' . $server_root . 'users/' . $row['IMAGE_NAME'] . '" width="300px"></div>'
-        . '<div class="col-md-7">' . $row['STATUS_TEXT']
+        . '<img class="img-responsive center-block w400 '. $row['FILTER'] . '" src="' . $server_root
+        . 'users/' . $row['IMAGE_NAME'] . '" alt="' . $row['IMAGE_NAME'] . '"></div>'
+        . '<div class="col-md-7"><br><p>' . str_replace("\'", "'", $row['STATUS_TEXT']) . '</p><hr><p>' . $postDate . '</p>'
         . '</div></div></div>' ;
     }
     
