@@ -6,8 +6,8 @@
 // When form is submitted, sanitize inputs and check for validity.
   if (isset($_POST['user']))
   {
-    $user = sanitizeStringHW7($_POST['user']);
-    $pass = sanitizeStringHW7($_POST['pass']);
+    $user = sanitizeString($db, $_POST['user']);
+    $pass = sanitizeString($db, $_POST['pass']);
 
     if ($user == "" || $pass == "")
       $error = "Not all fields were entered<br><br>";
@@ -32,7 +32,7 @@
     }
   }
 
-// Remove sign up button, present sign up form.
+// Remove top sign up button, present sign up form.
   echo <<<_END
     <script>
       $("#signUpBtn").remove();

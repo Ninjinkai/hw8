@@ -13,16 +13,7 @@ function sanitizeString($_db, $str)
     return mysqli_real_escape_string($_db, $str);
 }
 
-// Sanitizes the username and password strings to prevent injection attacks. (From homework 7)
-  function sanitizeStringHW7($var)
-{
-    global $db;
-    $var = strip_tags($var);
-    $var = htmlentities($var);
-    $var = stripslashes($var);
-    return $db->real_escape_string($var);
-}
-
+// Converts a photo upload form into a SQL query and executes it.  Returns error statement if failure.
 function SavePostToDB($_db, $_user, $_title, $_text, $_time, $_file_name, $_filter)
 {
 	/* Prepared statement, stage 1: prepare query */
@@ -44,6 +35,7 @@ function SavePostToDB($_db, $_user, $_title, $_text, $_time, $_file_name, $_filt
 	}
 }
 
+// Reads database table and 'users' folder, then populates wall with data and images.
 function getPostcards($_db)
 {
     $query = "SELECT USER_USERNAME, STATUS_TITLE, STATUS_TEXT, TIME_STAMP, IMAGE_NAME, FILTER FROM WALL ORDER BY TIME_STAMP DESC";
@@ -53,11 +45,14 @@ function getPostcards($_db)
         die('There was an error running the query [' . $_db->error . ']');
     }
     
+    // Iterate through rows returned by table query, inserting them into HTML.
     $output = '';
     while($row = $result->fetch_assoc())
     {
+        // Output posted date in a readable format.
         $postDate = date('F j, Y, g:i a T', $row['TIME_STAMP']);
 
+        // Creates a single post from image and text.  Because ' is escaped with \' in the database, it is changed back here.
         $output = $output . '<div class="panel panel-default"><div class="panel-heading">"'
         . str_replace("\'", "'", $row['STATUS_TITLE'])
         . '" posted by ' . str_replace("\'", "'", $row['USER_USERNAME']) . '</div>'

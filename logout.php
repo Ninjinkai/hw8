@@ -24,7 +24,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-  <meta name="description" content="photo sharing php COP3813 Nick Petty homework 7">
+  <meta name="description" content="photo sharing php COP3813 Nick Petty homework 8">
   <meta name="author" content="Nick Petty">
   <link rel="icon" href="icons/favicon.ico">
 <?php
@@ -32,6 +32,7 @@ echo "  <title>$appname</title>\n";
 ?>
   <!-- Stylesheets -->
   <link rel='stylesheet' href='css/bootstrap.css' type='text/css'>
+  <link rel="stylesheet" href="css/bootstrap-theme.min.css">
   <link rel='stylesheet' href='css/signin.css' type='text/css'>
   <link rel='stylesheet' href='css/styles.css' type='text/css'>
   <!-- Javascript -->
