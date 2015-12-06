@@ -47,7 +47,7 @@
         if ($_FILES)
         {
             $tmp_name = $_FILES['upload']['name'];
-            $dstFolder = 'users';
+            $dstFolder = '../project/users';
             move_uploaded_file($_FILES['upload']['tmp_name'], $dstFolder . DIRECTORY_SEPARATOR . $file_name);
         }
 

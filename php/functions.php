@@ -58,7 +58,7 @@ function getPostcards($_db)
         . '" posted by ' . str_replace("\'", "'", $row['USER_USERNAME']) . '</div>'
         . '<div class="row"><div class="col-md-5">'
         . '<img class="img-responsive center-block w400 '. $row['FILTER'] . '" src="' . $server_root
-        . 'users/' . $row['IMAGE_NAME'] . '" alt="' . $row['IMAGE_NAME'] . '"></div>'
+        . '../project/users/' . $row['IMAGE_NAME'] . '" alt="' . $row['IMAGE_NAME'] . '"></div>'
         . '<div class="col-md-7"><br><p>' . str_replace("\'", "'", $row['STATUS_TEXT']) . '</p><hr><p>' . $postDate . '</p>'
         . '</div></div></div>' ;
     }
